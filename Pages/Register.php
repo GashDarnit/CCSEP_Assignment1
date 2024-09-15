@@ -8,12 +8,15 @@
         <title>VulWeb_Register</title>
     </head>
     <body> <!-- This page is the registration page -->
+        <?php
+            include 'Data/dbUser.php';
+        ?>
         <div class="mainContainer">
             <header>
                 <h2>Register</h2>
             </header>
             <main>
-                <form>
+                <form id="register" method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" required>
@@ -35,6 +38,18 @@
                     </div>
                     <a href="../index.php" class="toggle-link">Already have an account? - Login</a>
                 </form>
+                <?php 
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                        $username = $_REQUEST['username'];
+                        $email = $_REQUEST['email'];
+                        $password = $_REQUEST['password'];
+                        $conPassword = $_REQUEST['confirm-password'];
+                        
+                        switch($result){
+                            
+                        }
+                    }
+                ?>
             </main>
             <footer>
                 <p>&copy; CCSEP Group 3</p>
