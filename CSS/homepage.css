@@ -61,11 +61,32 @@ main {
   margin: 0 auto;
 }
 
+.new-post-button {
+  position: initial;
+  top: 10px;
+  margin-left: 92%;
+  margin-bottom: 1%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+.new-post-button:hover {
+  background-color: #0056b3;
+}
+.new-post-button:active {
+  background-color: #004494;
+}
+
 /*The list of blogs*/
 .posts-grid {
-  display: grid;
+  /*display: grid;*/
   text-align: left;
-  grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+  /*grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));*/
   gap: 20px;
   overflow-y: auto;
   max-height: 65vh;
@@ -81,6 +102,12 @@ main {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  margin-bottom: 20px;
+}
+
+.bid {
+  opacity: 0.5;
 }
 
 footer {
