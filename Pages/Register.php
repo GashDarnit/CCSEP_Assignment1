@@ -9,11 +9,13 @@
     </head>
     <body> <!-- This page is the registration page -->
         <?php
-            include 'Data/dbUser.php';
+            include '../Lib/LibraryFunctions.php';
+            include '../Data/dbUser.php';
+            $db = new DBSQLiteUser("../Data/Database.db");
         ?>
         <div class="mainContainer">
             <header>
-                <h2>Register</h2>
+                <h2>G3Blog - Register</h2>
             </header>
             <main>
                 <form id="register" method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
@@ -44,9 +46,17 @@
                         $email = $_REQUEST['email'];
                         $password = $_REQUEST['password'];
                         $conPassword = $_REQUEST['confirm-password'];
-                        
-                        switch($result){
-                            
+                        if($password == $conPassword){
+                            $result = newUser($db, $username, $email, $password, "USER");
+                            if($result == "SUCCESS"){
+                                echo "<p>Account Successfully Created!</p>";
+                            }
+                            else{
+                                echo "<p>Account Creation Failed!</p>";
+                            }
+                        } 
+                        else{
+                            echo "Password And Confirm Password do not match!";
                         }
                     }
                 ?>

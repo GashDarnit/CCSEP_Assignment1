@@ -1,5 +1,4 @@
 <?php 
-    include './Lib/LibraryFunctions.php';
     class DBSQLiteUser{
         private $databaseObj;
         
@@ -13,7 +12,7 @@
             $returnStr = "FAIL";
             try{
                 $this->databaseObj->exec($sql);
-                $returnStr = "Successfully executed sql";
+                $returnStr = "SUCCESS";
             }
             catch(PDOException $sqlE){
                 consoleLog($sqlE->getMessage());
@@ -40,7 +39,7 @@
         }
     }
 
-    $db = new DBSQLiteUser("Data/Database.db");
+    //$db = new DBSQLiteUser("Data/Database.db");
 
     function getUserData(&$database, string $username, string $password){
         $sql = " SELECT * FROM Users WHERE Username = '$username' AND Password = '$password';";
@@ -74,6 +73,16 @@
             else{ // Wrong Username
                 $returnVal = -1;
             }
+        }
+        return $returnVal;
+    }
+
+    function newUser(&$database, string $username, string $email, string $password, string $userRole){
+        $returnVal = FALSE;
+        $sql = "INSERT INTO Users VALUES (NULL,'$userRole', '$username', '$email', '$password');";
+        $msg = $database->dbRawInsertQuery($sql);
+        if($msg == "SUCCESS"){
+            $returnVal = TRUE;
         }
         return $returnVal;
     }

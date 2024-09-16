@@ -9,11 +9,13 @@
     </head>
     <body> <!-- This page is the login page -->
         <?php
+            include './Lib/LibraryFunctions.php';
             include 'Data/dbUser.php';
+            $db = new DBSQLiteUser("Data/Database.db");
         ?>
         <div class="mainContainer">
             <header>
-                <h2>Login</h2>
+                <h2>G3Blog - Login</h2>
             </header>
             <main>
                 <form id="login" method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
