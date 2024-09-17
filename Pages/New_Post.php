@@ -7,8 +7,16 @@
         <title>CCSEP_VulWeb_NewPost</title>
     </head>
     <body>
-        <input type="hidden" value="">
+        <?php
+            include '../Lib/LibraryFunctions.php';
+            include '../Data/dbUser.php';
+            $db = new DBSQLiteUser("../Data/Database.db");
+        ?>
         <header>
+            <?php
+                $user = $_GET['user'];
+                consoleLog($user);
+            ?>
             <nav>
                 <ul>
                     <li><a href="javascript:history.back()">Back</a></li>
@@ -27,12 +35,12 @@
         <main>
             <div class="container">
                 <h1>Create New Blog Post</h1>
-                <form>
+                <form id="newPost" method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" required>
 
                     <label for="author">Author</label>
-                    <input type="text" id="author" name="author" required>
+                    <input type="text" id="author" name="author" value=<?php echo "$user" ?> required>
 
                     <label for="content">Content</label>
                     <textarea id="content" name="content" required></textarea>
@@ -41,6 +49,21 @@
                         <button type="submit" class="btn">Submit</button>
                     </div>
                 </form>
+                <?php
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                        $title = $_REQUEST['title'];
+                        $author = $_REQUEST['author'];
+                        $content = $_REQUEST['content'];
+                        $result = newBlogPost($db, $title, $author, $content);
+                        if($result == "SUCCESS"){
+                            echo "<script>alert('New Post Successfully Created!')</script>";
+                            redirect("Home_Admin.php?user=$user"); // Need to implement redirect by user or admin!
+                        }
+                        else{
+                            echo "<script>alert('New Post Creation Failed!')</script>";
+                        }
+                    }
+                ?>
             </div>
         </main>
         <footer>

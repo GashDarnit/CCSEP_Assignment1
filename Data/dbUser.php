@@ -115,4 +115,14 @@
         }
         return $dataArr;
     }
+
+    function newBlogPost(&$database, $title, $author, $content){
+        $returnVal = FALSE;
+        $sql = "INSERT INTO Blogposts VALUES (NULL, '$author', '$title', '$content');";
+        $msg = $database->dbRawInsertQuery($sql);
+        if($msg == "SUCCESS"){
+            $returnVal = TRUE;
+        }
+        return $returnVal;
+    }
 ?>

@@ -13,6 +13,10 @@
             $db = new DBSQLiteUser("../Data/Database.db");
         ?>
         <header>
+            <?php
+                $user = $_GET['user'];
+                consoleLog($user);
+            ?>
             <nav>
                 <ul>
                     <li><a href="">Home</a></li>
@@ -22,6 +26,7 @@
                     <h2>G3Blog</h2>
                 </div>
                 <div class="account-buttons">
+                    <?php echo "<p><b>Logged: </b>$user</p>"?>
                     <button>Profile</button>
                     <a href="../index.php">
                         <button>Log Out</button>

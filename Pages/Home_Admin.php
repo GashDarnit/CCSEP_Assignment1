@@ -27,6 +27,7 @@
                     <h2>G3Blog</h2>
                 </div>
                 <div class="account-buttons">
+                    <?php echo "<p><b>Logged: </b>$user</p>"?>
                     <button>Profile</button>
                     <a href="../index.php">
                         <button>Log Out</button>
