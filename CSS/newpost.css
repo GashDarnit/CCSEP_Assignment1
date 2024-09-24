@@ -111,3 +111,24 @@ textarea {
 .btn:active {
   background-color: #388e3c;
 }
+
+.postBtn {
+  position: initial;
+  top: 10px;
+  margin-left: 92%;
+  margin-bottom: 1%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+.postBtn:hover {
+  background-color: #0056b3;
+}
+.postBtn:active {
+  background-color: #004494;
+}

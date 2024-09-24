@@ -20,8 +20,9 @@
             ?>
             <nav>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="Home_User.php?role=<?php echo $role?>&user=<?php echo $user?>">Home</a></li>
                     <li><a href="">About</a></li>
+                    <li><a href="Contact_User.php?role=<?php echo $role?>&user=<?php echo $user?>">Feedback</a></li>
                 </ul>
                 <div>
                     <h2>G3Blog</h2>

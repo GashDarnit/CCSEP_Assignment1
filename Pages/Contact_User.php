@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/newpost.css" />
-        <title>VulWeb_NewPost</title>
+        <title>VulWeb_Contact</title>
     </head>
-    <body>
+    <body> <!-- This page is the admin home page -->
         <?php
             include '../Lib/LibraryFunctions.php';
             include '../Data/dbUser.php';
@@ -20,12 +20,15 @@
             ?>
             <nav>
                 <ul>
-                    <li><a href="javascript:history.back()">Back</a></li>
+                    <li><a href="Home_User.php?role=<?php echo $role?>&user=<?php echo $user?>">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Feedback</a></li>
                 </ul>
                 <div>
                     <h2>G3Blog</h2>
                 </div>
                 <div class="account-buttons">
+                    <?php echo "<p><b>Logged: </b>$user</p>"?>
                     <button>Profile</button>
                     <a href="../index.php">
                         <button>Log Out</button>
@@ -34,13 +37,13 @@
             </nav>
         </header>
         <main>
-            <div class="container">
-                <h1>Create New Blog Post</h1>
+        <div class="container">
+                <h1>Admin Feedback Form</h1>
                 <form id="newPost" method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" required>
 
-                    <label for="author">Author</label>
+                    <label for="author">Poster</label>
                     <input type="text" id="author" name="author" value=<?php echo "$user" ?> required>
 
                     <label for="content">Content</label>
@@ -55,16 +58,10 @@
                         $title = $_REQUEST['title'];
                         $author = $_REQUEST['author'];
                         $content = $_REQUEST['content'];
-                        $result = newBlogPost($db, $title, $author, $content);
+                        $result = newFeedback($db, $title, $author, $content);
                         if($result){
                             echo "<script>alert('New Post Successfully Created!')</script>";
-                            if($role == 'admin'){
-                                redirect("Home_Admin.php?role=$role&user=$user"); 
-                            }
-                            else{
-                                redirect("Home_User.php?role=$role&user=$user"); 
-                            }
-                            
+                            redirect("Home_User.php?role=$role&user=$user"); 
                         }
                         else{
                             echo "<script>alert('New Post Creation Failed!')</script>";

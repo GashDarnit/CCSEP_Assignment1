@@ -59,6 +59,12 @@
         return $retrievedData;
     }
 
+    function getFeedback(&$database){
+        $sql = "SELECT * FROM AdminFeedback;";
+        $retrievedData = $database->dbRawFetchQuery($sql);
+        return $retrievedData;
+    }
+
     // ----- Data Processing ----- //
 
     // Returns a result flag | 1 / 2 = success | -1 = invalid username | -2 = Invalid password | 0 = query failure
@@ -116,9 +122,34 @@
         return $dataArr;
     }
 
+    function getFeedBackArr(&$database){
+        $dataArr = [];
+        $data = getFeedback($database);
+        consoleLog(count($data));
+        for($i = 0; $i < count($data); $i++){
+            $taken = $data[$i];
+            $blogID = $taken['PostID'];
+            $poster = $taken['PosterName'];
+            $title = $taken['PostTitle'];
+            $content = $taken['PostContent'];
+            array_push($dataArr, [$blogID, $poster, $title, $content]);
+        }
+        return $dataArr;
+    }
+
     function newBlogPost(&$database, $title, $author, $content){
         $returnVal = FALSE;
         $sql = "INSERT INTO Blogposts VALUES (NULL, '$author', '$title', '$content');";
+        $msg = $database->dbRawInsertQuery($sql);
+        if($msg == "SUCCESS"){
+            $returnVal = TRUE;
+        }
+        return $returnVal;
+    }
+
+    function newFeedback(&$database, $title, $author, $content){
+        $returnVal = FALSE;
+        $sql = "INSERT INTO AdminFeedback VALUES (NULL, '$author', '$title', '$content');";
         $msg = $database->dbRawInsertQuery($sql);
         if($msg == "SUCCESS"){
             $returnVal = TRUE;

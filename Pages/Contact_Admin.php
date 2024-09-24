@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/homepage.css" />
-        <title>VulWeb_Admin_Home</title>
+        <title>VulWeb_Admin_Contact</title>
     </head>
     <body> <!-- This page is the admin home page -->
         <?php
@@ -22,7 +22,6 @@
                 <ul>
                     <li><a href="Home_Admin.php?role=<?php echo $role?>&user=<?php echo $user?>">Home</a></li>
                     <li><a href="">About</a></li>
-                    <li><a href="Contact_Admin.php?role=<?php echo $role?>&user=<?php echo $user?>">Feedback</a></li>
                     <li><a href="">Security</a></li>
                 </ul>
                 <div>
@@ -39,15 +38,12 @@
         </header>
         <main>
             <div class="blog-posts">
-                <h2>Admin - Blog Posts</h2>
-                <a href="New_Post.php?role=<?php echo $role?>&user=<?php echo $user?>">
-                    <button class="new-post-button" type="submit">New Blog Post</button>
-                </a>
+                <h2>Admin - Feedback Posts</h2>
                 <ol class="posts-grid">
                     <?php
-                        $data = getBlogPostsArr($db);
+                        $data = getFeedBackArr($db);
                         for($i = 0; $i < count($data); $i++){
-                            $blogID = $data[$i][0];
+                            $postID = $data[$i][0];
                             $poster = $data[$i][1];
                             $title = $data[$i][2];
                             $content = $data[$i][3];
@@ -55,8 +51,9 @@
                                 <li class='post'>
                                     <h3>$title</h3> - <b>$poster</b>
                                     <p>$content</p>
-                                    <i class='bid'>id:$blogID</i>
+                                    <i class='bid'>id:$postID</i>
                                 </li>
+                                <button class='postBtn'>Resolve</button>
                             ";
                         }
                     ?>
