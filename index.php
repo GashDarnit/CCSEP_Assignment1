@@ -45,12 +45,12 @@
                             case 1:
                                 echo "<p>Login Successful!</p>";
                                 // go to logged in page
-                                redirect("Pages/Home_User.php?user=$username");
+                                redirect("Pages/Home_User.php?role=user&user=$username");
                                 break;
                             case 2:
                                 echo "<p>Login Successful!</p>";
                                 // go into admin page
-                                redirect("Pages/Home_Admin.php?user=$username");
+                                redirect("Pages/Home_Admin.php?role=admin&user=$username");
                                 break;
                             case -1:
                                 echo "<p>Username is Invalid!</p>";

@@ -15,7 +15,8 @@
         <header>
             <?php
                 $user = $_GET['user'];
-                consoleLog($user);
+                $role = $_GET['role'];
+                consoleLog("$user + $role");
             ?>
             <nav>
                 <ul>
@@ -37,7 +38,7 @@
         <main>
             <div class="blog-posts">
                 <h2>Blog Posts</h2>
-                <a href="New_Post.php">
+                <a href="New_Post.php?role=<?php echo $role?>&user=<?php echo $user?>">
                     <button class="new-post-button">New Blog Post</button>
                 </a>
                 <ol class="posts-grid">

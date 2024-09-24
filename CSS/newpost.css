@@ -3,6 +3,7 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 header,
@@ -11,6 +12,7 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
+  width: 100%;
 }
 
 nav {
@@ -38,6 +40,7 @@ nav ul li a {
 
 .account-buttons {
   display: flex;
+  margin-left: auto;
 }
 
 .account-buttons button {

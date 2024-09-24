@@ -15,7 +15,8 @@
         <header>
             <?php
                 $user = $_GET['user'];
-                consoleLog($user);
+                $role = $_GET['role'];
+                consoleLog("$user + $role");
             ?>
             <nav>
                 <ul>
@@ -57,7 +58,13 @@
                         $result = newBlogPost($db, $title, $author, $content);
                         if($result == "SUCCESS"){
                             echo "<script>alert('New Post Successfully Created!')</script>";
-                            redirect("Home_Admin.php?user=$user"); // Need to implement redirect by user or admin!
+                            if($role == 'admin'){
+                                redirect("Home_Admin.php?role=$role&user=$user"); 
+                            }
+                            else{
+                                redirect("Home_User.php?role=$role&user=$user"); 
+                            }
+                            
                         }
                         else{
                             echo "<script>alert('New Post Creation Failed!')</script>";
