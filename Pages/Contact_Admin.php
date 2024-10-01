@@ -22,6 +22,7 @@
                 <ul>
                     <li><a href="Home_Admin.php?role=<?php echo $role?>&user=<?php echo $user?>">Home</a></li>
                     <li><a href="">About</a></li>
+                    <li><a href="Contact_Admin.php?role=<?php echo $role?>&user=<?php echo $user?>">Feedback</a></li>
                     <li><a href="">Security</a></li>
                 </ul>
                 <div>
