@@ -42,6 +42,9 @@
                 <a href="New_Post.php?role=<?php echo $role?>&user=<?php echo $user?>">
                     <button class="new-post-button">New Blog Post</button>
                 </a>
+                <a href="Get_File.php?role=<?php echo $role?>&user=<?php echo $user?>">
+                    <button class="Travel-button">Travel</button>
+                </a>
                 <ol class="posts-grid">
                     <?php
                         $data = getBlogPostsArr($db);
