@@ -42,7 +42,18 @@
                 <ol class="posts-grid">
                     <?php
                         $data = getFeedBackArr($db);
+                        //function sanitize_input($data) {
+                        //    return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+                        //}
+                        
                         for($i = 0; $i < count($data); $i++){
+                            //Mitigation - input sanitization
+                            //$postID = sanitize_input($data[$i][0], ENT_QUOTES, 'UTF-8');
+                            //$poster = sanitize_input($data[$i][1], ENT_QUOTES, 'UTF-8');
+                            //$title = sanitize_input($data[$i][2], ENT_QUOTES, 'UTF-8');
+                            //$content = sanitize_input($data[$i][3], ENT_QUOTES, 'UTF-8');
+
+                            //Vulnerable code
                             $postID = $data[$i][0];
                             $poster = $data[$i][1];
                             $title = $data[$i][2];
