@@ -45,18 +45,19 @@
                 </form>
                 <?php
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
-                        $url = $_REQUEST['filename'];
-   			redirect($url);
-		    	echo "<script>alert('Travel Successful')</script>";
-		    	if($role == 'admin'){
+			    $url = $_REQUEST['filename'];
+			    $filename = basename($url);
+			    $safeurl = '/Pages/' . $filename . '.php';
+			    redirect($safeurl);
+			    echo "<script>alert('Travel Successful')</script>";
+			    if($role == 'admin'){
 				redirect("Home_Admin.php?role=$role&user=$user"); 
-			}
-			else{
+			    
+			    }
+			    else{
 				redirect("Home_User.php?role=$role&user=$user"); 
-		    	}
-                            
-                    }
-
+			    }
+		    }
                 ?>
             </div>
         </main>
